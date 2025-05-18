@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1747447230 source:c:\c\primer-algoritmo\main.c
+	<stdio.h>
+	<stdlib.h>
+
+1747448768 source:c:\c\primer-algoritmo\segundo_arch.c
+	<stdio.h>
+	<stdlib.h>
+
