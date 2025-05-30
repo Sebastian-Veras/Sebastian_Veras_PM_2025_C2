@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
-
+/* Promedio de sueldos
+El programa al recibir como datos seis suledos de un empleado,
+calcule tanto el ingreso total como el promedio mensual*/
 int main()
 {
     int CLA;

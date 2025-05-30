@@ -1,5 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
+/* Superficie del triangulo
+El programa, al recbir como datos la base y la altura
+de un triangulo, calcula su superficie;*/
 
 int main()
 {

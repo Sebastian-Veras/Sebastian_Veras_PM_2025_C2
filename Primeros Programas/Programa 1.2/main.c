@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
-
+/* Invierte lso datos
+el programa al recibir como dato un conjucto de dato de
+entrada, invierte el orden de lso mismos cuando los imprime*/
 int main()
 {
     int A,B,C,D;
