@@ -1,6 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+/* Empresa textil.
+ El programa, al recibir como datos decisivos la categoría y antigüedad de
+ un empleado, determina si el mismo reúne las condiciones establecidas por
+ la empresa para ocupar un nuevo cargo en una sucursal.
+CLA, CAT, ANT, RES: variables de tipo entero.
+ SAL: variable de tipo real. */
+
+
+
 void main(void)
 {
  int CLA, CAT, ANT, RES;

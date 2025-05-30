@@ -1,6 +1,11 @@
 #include <stdio.h>
 #include <math.h>
 
+
+ /* Par, impar o nulo.
+ FIN
+ NUM: variable de tipo entero. */
+
 void main(void)
 {
   int NUM;

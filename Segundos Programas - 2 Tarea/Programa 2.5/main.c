@@ -1,6 +1,10 @@
 #include <stdio.h>
 #include <math.h>
 
+ /* Función matemática.
+ El programa obtiene el resultado de una función.
+ OP y T: variables de tipo entero.
+ RES: variable de tipo real. */
 void main (void)
 {
     int OP,T;
@@ -13,7 +17,6 @@ void main (void)
         case 1: RES = T/5;
         break;
         case 2: RES = pow(T,T);
-        //la funcion power esta definida en al bibloteca math.h//
         break;
         case 3:
         case 4: RES = 6 * T/2;

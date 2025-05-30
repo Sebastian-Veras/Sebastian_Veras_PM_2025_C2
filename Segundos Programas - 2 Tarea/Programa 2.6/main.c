@@ -1,6 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+
+ /* Incremento de salario.
+El programa, al recibir como dato el nivel de un profesor, incrementa su
+ salario en función de la tabla 2.3.
+NIV: variable de tipo entero.
+ SAL: variables de tipo real. */
+
 void  main(void)
 {
     float SAL;
