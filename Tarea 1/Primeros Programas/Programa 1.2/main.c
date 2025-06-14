@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
-/* Invierte lso datos
+/* Invierte los datos
 el programa al recibir como dato un conjucto de dato de
 entrada, invierte el orden de lso mismos cuando los imprime*/
-int main()
+void main(void)
 {
     int A,B,C,D;
     printf("Ingrese cuatro variables de tipo entero: ");
@@ -11,5 +11,5 @@ int main()
     printf ("\n %d %d %d %d", D,C,B,A);
 
 
-    return 0;
+
 }
