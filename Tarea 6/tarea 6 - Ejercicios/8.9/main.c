@@ -21,15 +21,15 @@ typedef struct {
 
 /* Prototipos */
 void Lectura(propiedades[], int);
-void F1(propiedades[], int);
-void F2(propiedades[], int);
+void F1(propiedades*, int);
+void F2(propiedades*, int);
 
 int main(void) {
     propiedades PROPIE[100];
     int TAM;
 
     do {
-        printf("Ingrese el número de propiedades (1-100): ");
+        printf("Ingrese el número de propiedades : ");
         scanf("%d", &TAM);
     } while (TAM < 1 || TAM > 100);
 
@@ -128,4 +128,4 @@ void F2(propiedades A[], int T) {
     }
 }
 
-f
+

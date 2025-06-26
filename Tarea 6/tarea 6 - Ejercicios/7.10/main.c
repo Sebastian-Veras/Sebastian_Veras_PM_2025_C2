@@ -14,7 +14,7 @@ void main(void)
 
     printf("\nDesea ingresar una cadena de caracteres (S/N)? ");
     c = getchar();
-    while (c == 'S' || c == 's')  // Permitir mayúsculas y minúsculas
+    while (c == 'S' )  // Permitir mayúsculas y minúsculas
     {
         printf("\nIngrese la cadena de caracteres: ");
         getchar();  // Limpia el salto de línea pendiente de getchar()

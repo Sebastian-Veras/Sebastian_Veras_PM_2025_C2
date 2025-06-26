@@ -8,6 +8,8 @@ void main(void)
     char *cad0;
     cad0 = "Argentina";  // Correcto: asignación de puntero
     puts(cad0);
+
+
     cad0 = "Brasil";     // Correcto: cambio de puntero
     puts(cad0);
 

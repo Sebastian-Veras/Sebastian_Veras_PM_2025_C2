@@ -9,7 +9,7 @@ void Funcion1(int A[][C][P], int FI, int CO, int PR);
 void Funcion2(int A[][C][P], int FI, int CO, int PR);
 void Funcion3(int A[][C][P], int FI, int CO, int PR);
 
-int main(void) {
+void main(void) {
     int UNI[F][C][P];
 
     lectura(UNI, F, C, P);
@@ -17,7 +17,7 @@ int main(void) {
     Funcion2(UNI, F, C, P);
     Funcion3(UNI, 6, C, P);  // Carrera en fila 6
 
-    return 0;
+
 }
 
 // Definición de funciones

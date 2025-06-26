@@ -18,7 +18,8 @@ void main(void) {
     do {
         printf("Ingrese el tamaño de la matriz: ");
         scanf("%d", &TAM);
-    } while (TAM > 10 || TAM < 1);
+    }
+     while (TAM > 10 || TAM < 1);
 
     Lectura(MAT, TAM);
     Calcula(MAT, VEC, TAM);

@@ -1,6 +1,7 @@
 #include <stdio.h>
 
-void main(void) {
+void main(void)
+{
     char p1, p2, p3 = '$';
 
     printf("\nIngrese un caracter: ");

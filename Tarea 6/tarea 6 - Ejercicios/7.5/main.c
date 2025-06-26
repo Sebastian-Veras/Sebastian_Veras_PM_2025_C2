@@ -7,7 +7,7 @@ void main(void) {
     int i;
     double d;
     long l;
-    char cad0[100], *cad1;  // Cadena de entrada y puntero para strtod/strtol
+    char cad0[20], *cad1;  // Cadena de entrada y puntero para strtod/strtol
 
     printf("\nIngrese una cadena de caracteres (entero): ");
     gets(cad0);

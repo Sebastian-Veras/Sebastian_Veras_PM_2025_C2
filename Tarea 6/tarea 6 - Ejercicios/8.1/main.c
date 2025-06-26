@@ -18,7 +18,7 @@ void limpiarBuffer() {
     while ((c = getchar()) != '\n' && c != EOF) { }
 }
 
-int main(void)
+void main(void)
 {
     struct alumno a1 = {120, "María", "Contabilidad", 8.9, "Querétaro"};
     struct alumno a2, a3;
@@ -94,5 +94,5 @@ int main(void)
     printf("%d \t %s \t %s \t %.2f \t %s\n",
            a3.matricula, a3.nombre, a3.carrera, a3.promedio, a3.direccion);
 
-    return 0;
+
 }

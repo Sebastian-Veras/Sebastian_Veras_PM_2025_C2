@@ -7,7 +7,7 @@ void Lectura(float A[][MAX], int F, int C);
 void Intercambia(float A[][MAX], int F, int C);
 void Imprime(float A[][MAX], int F, int C);
 
-int main(void) {
+void main(void) {
     int F, C;
     float MAT[MAX][MAX];
 
@@ -27,7 +27,7 @@ int main(void) {
     Intercambia(MAT, F, C);
     Imprime(MAT, F, C);
 
-    return 0;
+
 }
 
 // Función para leer la matriz

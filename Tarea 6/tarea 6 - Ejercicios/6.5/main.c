@@ -20,7 +20,7 @@
  scanf("%d", &NAL);
  }     /* Se verifica que el número de alumnos del grupo sea válido. */
  while (NAL > MAX || NAL < 1);
-Lectura(ALU, NAL);
+ Lectura(ALU, NAL);
  Funcion1(ALU, NAL);
  Funcion2(ALU, NAL);
  }

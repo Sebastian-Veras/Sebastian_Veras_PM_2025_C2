@@ -13,7 +13,8 @@ struct alumno
 
 void Lectura(struct alumno *);  // prototipo de función
 
-int main(void)
+
+void main(void)
 {
     struct alumno a0 = {120, "María", "Contabilidad", 8.9, "Querétaro"};
     struct alumno *a3, *a4, *a5, a6;
@@ -26,7 +27,7 @@ int main(void)
 
     if (a4 == NULL || a5 == NULL) {
         printf("Error al asignar memoria.\n");
-        return 1;
+
     }
 
     printf("\nIngrese la matrícula del alumno 4: ");
@@ -70,7 +71,7 @@ int main(void)
     free(a4);
     free(a5);
 
-    return 0;
+
 }
 
 void Lectura(struct alumno *a)

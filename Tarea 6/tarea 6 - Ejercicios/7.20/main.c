@@ -23,7 +23,7 @@ void main(void)
     for(i = 0; i < n; i++)
     {
         strcpy(cad, FRA[i]);
-        t = longitud(cad);
+       int t = longitud(cad);
         if(t > l)
         {
             l = t;
