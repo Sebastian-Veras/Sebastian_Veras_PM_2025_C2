@@ -68,8 +68,7 @@ void main(void)
     printf("%d\t%s\t%s\t%.2f\t%s\n", a6.matricula, a6.nombre, a6.carrera, a6.promedio, a6.direccion);
 
     // Liberar memoria dinámica
-    free(a4);
-    free(a5);
+
 
 
 }
