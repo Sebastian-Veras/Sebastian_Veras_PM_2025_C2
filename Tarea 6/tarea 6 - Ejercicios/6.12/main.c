@@ -30,10 +30,13 @@ F filas, C columnas y P planos de profundidad. */
     for(K=0; K<P; K++)
         for(I=0; I<F; I++)
             for(J=0; J<C; J++)
-            {
-                printf("Año: %d\tProvincia: %d\tMes: %d", K+1, I+1, J+1);
-                scanf("%f", &A[I][J][K]);
-            }
+         {
+
+
+printf("Año de registro: %d\n", K+1);
+printf("Provincia asignada: %d\n", I+1);
+printf("Mes del dato: %d\n", J+1);
+
 }
 
 void Funcion1(float A[][MES][ANO], int F, int C, int P)
@@ -99,5 +102,6 @@ la provincia 18 en el quinto año. Escribe además el registro correspondiente. 
             EMES = J;
         }
     }
-    printf("\n\nMes: %d Lluvias: %.2f", EMES+1, ELLU);
+   printf("Mes del reporte: %d\n", EMES + 1);
+printf("Cantidad de lluvia: %.2f mm\n", ELLU);
 }

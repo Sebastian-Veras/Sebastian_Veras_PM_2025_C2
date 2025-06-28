@@ -33,5 +33,8 @@ void lectura(int A[][TAM],int F)
  for (I=0; I<F; I++)
  for (J=0; J<TAM; J++)
  if (I == J)
+ {
  printf("\nDiagonal %d %d: %d ", I, J, A[I][J]);
+ }
+
  }

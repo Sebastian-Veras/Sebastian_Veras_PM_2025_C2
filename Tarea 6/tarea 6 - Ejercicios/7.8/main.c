@@ -1,71 +1,65 @@
-#include <stdio.h>
-#include <string.h>
-#include <ctype.h>
+#include <stdio.h>   // Para printf, scanf, gets, puts
+#include <string.h>  // Para strcspn (necesario si quitaras el \n de fgets, pero con gets no aplica)
+#include <ctype.h>   // Para islower, isupper
 
 /* Minúsculas y mayúsculas.
- * El programa, al recibir como dato un arreglo unidimensional de tipo
+ * El programa, al recibir como dato un arreglo bidimensional de tipo
  * cadena de caracteres, determina el número de minúsculas y mayúsculas
  * que hay en cada cadena.
  */
 
-// Corrección: El prototipo debe coincidir con la implementación de la función
-// Se pasa un puntero al primer carácter de la cadena.
-void minymay(char *cad);
+// Prototipo de función: 'minymay' recibe un puntero a char (char*)
+void minymay(char *cadena);
 
-int main(void) // Corrección: Cambiado a 'int main(void)' por estándar C
+int main(void) // Usamos int main(void) por ser el estándar
 {
     int i, n;
-    char FRA[20][50]; // Arreglo de cadenas de caracteres, 20 cadenas de hasta 49 caracteres + \0
+    // Arreglo bidimensional de cadenas de caracteres.
+    char FRA[20][50];
 
-    printf("\nIngrese el numero de lineas de texto (maximo 20): ");
+    printf("\nIngrese el numero de cadenas (filas) del arreglo (max 20): ");
     scanf("%d", &n);
-    // Validación básica para evitar desbordamiento del arreglo FRA
-    if (n < 1 || n > 20) {
-        printf("Numero de lineas invalido. Se ajustara a 20.\n");
+
+    // Validar que 'n' no exceda el tamaño del arreglo
+    if (n > 20 || n < 1) {
+        printf("Numero de cadenas invalido. Se ajustara a 20.\n");
         n = 20;
     }
 
-    // Limpia el buffer después de scanf. Es buena práctica antes de usar fgets en un bucle.
-    while (getchar() != '\n');
+    // Limpiar el buffer de entrada después de scanf.
+    // Esto consume el caracter de nueva línea que scanf deja.
+    while (getchar() != '\n' && !feof(stdin));
 
-    for (i = 0; i < n; i++)
-    {
-        printf("Ingrese la linea %d de texto: ", i + 1);
-        // fgets es más seguro que gets, ya que previene desbordamientos de buffer.
-        // sizeof(FRA[i]) asegura que no se lea más allá del tamaño de la cadena actual.
-        fgets(FRA[i], sizeof(FRA[i]), stdin);
-
-        // Elimina el salto de línea ('\n') que fgets puede incluir al final de la cadena.
-        // strcspn encuentra la posición del primer '\n' y lo reemplaza con '\0'.
-        FRA[i][strcspn(FRA[i], "\n")] = '\0';
+    for (i = 0; i < n; i++) {
+        printf("Ingrese la linea %d de texto (¡ADVERTENCIA: NO ingrese mas de 49 caracteres!): ", i + 1);
+        // ¡USO DE GETS() - EXTREMADAMENTE INSEGURO!
+        // No hay comprobacion de limites, lo que puede causar desbordamientos de buffer.
+        gets(FRA[i]);
     }
 
-    printf("\n--- Resultados ---\n");
-    for (i = 0; i < n; i++)
-    {
-        printf("\nAnalizando cadena %d: \"%s\"\n", i + 1, FRA[i]);
-        minymay(FRA[i]); // Se pasa cada cadena individual a la función
+    printf("\n--- Analisis de Cadenas ---\n");
+    for (i = 0; i < n; i++) {
+        printf("\nCadena '%s':", FRA[i]); // Muestra la cadena que se esta analizando
+        minymay(FRA[i]); // Llama a la funcion para analizar cada cadena
     }
 
-    return 0; // Se añade un retorno para 'int main'
+    return 0; // Indica que el programa finalizó correctamente
 }
 
-void minymay(char *cad) // La función recibe un puntero a la cadena
+void minymay(char *cadena)
+/* Esta función se utiliza para calcular el número de minúsculas
+ * y mayúsculas que hay en cada cadena.
+ */
 {
-    int i = 0, mi = 0, ma = 0; // mi para minúsculas, ma para mayúsculas
-
-    // Recorre la cadena hasta encontrar el carácter nulo de terminación ('\0')
-    while (cad[i] != '\0')
-    {
-        // islower() verifica si el carácter es una letra minúscula
-        if (islower(cad[i]))
+    int i = 0, mi = 0, ma = 0;
+    while (cadena[i] != '\0') {
+        if (islower(cadena[i])) {
             mi++;
-        // isupper() verifica si el carácter es una letra mayúscula
-        else if (isupper(cad[i]))
+        } else if (isupper(cadena[i])) {
             ma++;
-        i++; // Avanza al siguiente carácter
+        }
+        i++;
     }
-
-    printf("Numero de letras minusculas: %d\n", mi);
-    printf("Numero de letras mayusculas: %d\n", ma);
+    printf("\nNumero de letras minusculas: %d", mi);
+    printf("\nNumero de letras mayusculas: %d", ma);
 }

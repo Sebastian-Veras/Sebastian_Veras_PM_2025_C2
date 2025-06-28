@@ -44,12 +44,12 @@ void Lectura(float A[][MAX], int F, int C) {
 // Función para intercambiar las columnas
 void Intercambia(float A[][MAX], int F, int C) {
     int I, J;
-    float temp;
+    float AUX;
     for (J = 0; J < C / 2; J++) {
         for (I = 0; I < F; I++) {
-            temp = A[I][J];
+            AUX = A[I][J];
             A[I][J] = A[I][C - 1 - J];
-            A[I][C - 1 - J] = temp;
+            A[I][C - 1 - J] = AUX;
         }
     }
 }
@@ -60,7 +60,7 @@ void Imprime(float A[][MAX], int F, int C) {
     printf("\nMatriz resultante:\n");
     for (I = 0; I < F; I++) {
         for (J = 0; J < C; J++) {
-            printf("%6.2f ", A[I][J]);
+            printf("\nElemento %d %d: %5.2f", I+1, J+1, A[I][J]);
         }
         printf("\n");
     }

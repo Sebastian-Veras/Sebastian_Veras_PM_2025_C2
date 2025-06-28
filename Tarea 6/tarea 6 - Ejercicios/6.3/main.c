@@ -23,6 +23,7 @@ void main(void) {
 // Definición de funciones
 
 void lectura(int A[][C][P], int FI, int CO, int PR) {
+    int K, I, J;
     for (int i = 0; i < FI; i++) {
         for (int j = 0; j < CO; j++) {
             for (int k = 0; k < PR; k++) {

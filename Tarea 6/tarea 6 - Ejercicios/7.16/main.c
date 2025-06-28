@@ -15,7 +15,7 @@ void main(void)
 
     printf("\nIngrese la cadena a buscar: ");
     gets(cad2);
-
+strcpy(cad0, cad1);
     cad0 = strstr(cad1, cad2);
     /* En cad0 se asigna el apuntador a la primera ocurrencia de la cadena cad2.
        Si no existe se almacena NULL. */
