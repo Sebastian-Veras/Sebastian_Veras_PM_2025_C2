@@ -64,6 +64,58 @@ Alumno *leerAlumnos(int *numAlumnos) {
     return alumnos;
 }
 
+// Función para escribir un array de alumnos de nuevo en el archivo
+void escribirAlumnosEnArchivo(const Alumno *alumnos, int numAlumnos) {
+    FILE *archivo = fopen(NOMBRE_ARCHIVO, "wb"); // Abrir en modo "write binary" (sobrescribe)
+    if (archivo == NULL) {
+        perror("Error al abrir el archivo para escritura");
+        return;
+    }
+    fwrite(alumnos, sizeof(Alumno), numAlumnos, archivo);
+    fclose(archivo);
+}
+
+
+// Función para eliminar un alumno del archivo binario
+void eliminarAlumno() {
+    int numAlumnos;
+    Alumno *alumnos = leerAlumnos(&numAlumnos);
+
+    if (alumnos == NULL || numAlumnos == 0) {
+        printf("No hay alumnos para eliminar.\n");
+        return;
+    }
+
+    printf("\n--- Alumnos Registrados ---\n");
+    for (int i = 0; i < numAlumnos; i++) {
+        printf("%d. Nombre: %s, Promedio: %.2f\n", i + 1, alumnos[i].nombre, alumnos[i].promedio);
+    }
+
+    int indiceAEliminar;
+    printf("Ingrese el número del alumno a eliminar: ");
+    scanf("%d", &indiceAEliminar);
+
+    if (indiceAEliminar < 1 || indiceAEliminar > numAlumnos) {
+        printf("Número de alumno no válido.\n");
+        free(alumnos);
+        return;
+    }
+
+    // Mover los elementos después del índice a eliminar para sobrescribir
+    for (int i = indiceAEliminar - 1; i < numAlumnos - 1; i++) {
+        alumnos[i] = alumnos[i + 1];
+    }
+
+    numAlumnos--; // Decrementar el contador de alumnos
+
+    // Volver a escribir todo el array (sin el alumno eliminado) en el archivo
+    escribirAlumnosEnArchivo(alumnos, numAlumnos);
+
+    printf("Alumno eliminado con éxito.\n");
+    free(alumnos);
+}
+
+
 // Función para imprimir un solo alumno
 void imprimirAlumno(const Alumno *alumno) {
     printf("Nombre: %s, Promedio: %.2f\n", alumno->nombre, alumno->promedio);
@@ -113,10 +165,11 @@ void imprimirAlumnos(int opcion) {
         printf("\n--- Lista de Alumnos (Ordenada Alfabéticamente por Nombre) ---\n");
     } else if (opcion == 2) {
         bubbleSortPorPromedio(alumnos, numAlumnos);
-        printf("\n--- Lista de Alumnos (Ordenada por Promedio) ---\n");
-    } else {
-        printf("\n--- Lista de Alumnos (Sin Ordenar) ---\n");
+        printf("\n--- Lista de Alumnos (Ordenada por Promedio de Mayor a Menor) ---\n");
+    } else if (opcion == 3) {
+        printf("\n--- Lista de Alumnos (En Orden de Registro) ---\n");
     }
+
 
     for (int i = 0; i < numAlumnos; i++) {
         imprimirAlumno(&alumnos[i]);
@@ -125,15 +178,17 @@ void imprimirAlumnos(int opcion) {
     free(alumnos); // Liberar la memoria asignada dinámicamente
 }
 
-void main(void) {
+int main(void) {
     int opcion;
 
     do {
         printf("\n--- MENÚ ---\n");
         printf("1. Agregar alumno\n");
         printf("2. Imprimir alumnos (Orden Alfabético por Nombre)\n");
-        printf("3. Imprimir alumnos (Orden por Promedio)\n");
-        printf("4. Salir\n");
+        printf("3. Imprimir alumnos (Orden por Promedio de Mayor a Menor)\n");
+        printf("4. Imprimir alumnos (Orden de Registro)\n");
+        printf("5. Eliminar alumno\n");
+        printf("6. Salir\n");
         printf("Seleccione una opción: ");
         scanf("%d", &opcion);
 
@@ -148,12 +203,18 @@ void main(void) {
                 imprimirAlumnos(2); // Opción para ordenar por promedio
                 break;
             case 4:
+                imprimirAlumnos(3); // Opción para orden de registro (natural)
+                break;
+            case 5:
+                eliminarAlumno();
+                break;
+            case 6:
                 printf("Saliendo del programa. ¡Hasta luego!\n");
                 break;
             default:
                 printf("Opción no válida. Por favor, intente de nuevo.\n");
         }
-    } while (opcion != 4);
+    } while (opcion != 6);
 
-
+    return 0; // Se recomienda que main devuelva un int
 }
