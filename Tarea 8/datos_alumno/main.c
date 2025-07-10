@@ -1,19 +1,18 @@
 #include <stdio.h>
-#include <stdlib.h> // Para malloc, free
-#include <string.h> // Para strcpy, strcmp
+#include <stdlib.h>
+#include <string.h>
 
-// Estructura para almacenar los datos de un alumno
 typedef struct Alumno {
     char nombre[50];
     int edad;
     float promedio;
-    struct Alumno *siguiente; // Puntero al siguiente alumno en la lista
+    struct Alumno *siguiente;
 } Alumno;
 
-// Puntero global al inicio de la lista de alumnos
+
 Alumno *listaAlumnos = NULL;
 
-// Función para agregar un nuevo alumno a la lista
+
 void agregarAlumno() {
     Alumno *nuevoAlumno = (Alumno *)malloc(sizeof(Alumno));
     if (nuevoAlumno == NULL) {
@@ -22,29 +21,26 @@ void agregarAlumno() {
     }
 
     printf("Ingrese el nombre del alumno: ");
-    // Usar fgets para leer nombres con espacios si es necesario, y luego limpiar el newline
-    // Para simplificar, seguimos con scanf para un solo token (sin espacios)
     scanf("%s", nuevoAlumno->nombre);
     printf("Ingrese la edad del alumno: ");
     scanf("%d", &nuevoAlumno->edad);
     printf("Ingrese el promedio del alumno: ");
     scanf("%f", &nuevoAlumno->promedio);
 
-    nuevoAlumno->siguiente = NULL; // El nuevo alumno es el último por ahora
+    nuevoAlumno->siguiente = NULL;
 
     if (listaAlumnos == NULL) {
-        listaAlumnos = nuevoAlumno; // Si la lista está vacía, el nuevo alumno es el primero
+        listaAlumnos = nuevoAlumno;
     } else {
         Alumno *temp = listaAlumnos;
         while (temp->siguiente != NULL) {
-            temp = temp->siguiente; // Recorre la lista hasta el último elemento
+            temp = temp->siguiente;
         }
-        temp->siguiente = nuevoAlumno; // Enlaza el nuevo alumno al final
+        temp->siguiente = nuevoAlumno;
     }
     printf("Alumno agregado exitosamente.\n");
 }
 
-// Función para mostrar todos los alumnos en la lista
 void mostrarAlumnos() {
     if (listaAlumnos == NULL) {
         printf("No hay alumnos para mostrar.\n");
@@ -58,11 +54,11 @@ void mostrarAlumnos() {
         printf("Nombre: %s\n", temp->nombre);
         printf("Edad: %d\n", temp->edad);
         printf("Promedio: %.2f\n", temp->promedio);
-        temp = temp->siguiente; // Mueve al siguiente alumno usando el puntero
+        temp = temp->siguiente;
     }
 }
 
-// Función para eliminar un alumno por nombre
+
 void eliminarAlumno() {
     if (listaAlumnos == NULL) {
         printf("No hay alumnos para eliminar.\n");
@@ -77,11 +73,11 @@ void eliminarAlumno() {
     Alumno *anterior = NULL;
     int encontrado = 0;
 
-    // Buscar el alumno en la lista
+
     while (actual != NULL) {
         if (strcmp(actual->nombre, nombreAEliminar) == 0) {
             encontrado = 1;
-            break; // Se encontró el alumno
+            break;
         }
         anterior = actual;
         actual = actual->siguiente;
@@ -92,22 +88,22 @@ void eliminarAlumno() {
         return;
     }
 
-    // Si el alumno a eliminar es el primero de la lista
+
     if (anterior == NULL) {
-        listaAlumnos = actual->siguiente; // El nuevo primer alumno es el siguiente
+        listaAlumnos = actual->siguiente;
     } else {
-        // Si el alumno a eliminar está en medio o al final
-        anterior->siguiente = actual->siguiente; // El anterior ahora apunta al siguiente del actual
+
+        anterior->siguiente = actual->siguiente;
     }
 
-    free(actual); // Libera la memoria del alumno eliminado
+    free(actual);
     printf("Alumno '%s' eliminado exitosamente.\n", nombreAEliminar);
 }
 
 
-// Función para guardar los alumnos en un archivo binario
+
 void guardarAlumnos() {
-    FILE *archivo = fopen("alumnos.dat", "wb"); // Abre el archivo en modo escritura binaria
+    FILE *archivo = fopen("alumnos.dat", "wb");
     if (archivo == NULL) {
         printf("Error al abrir el archivo para guardar.\n");
         return;
@@ -115,7 +111,7 @@ void guardarAlumnos() {
 
     Alumno *temp = listaAlumnos;
     while (temp != NULL) {
-        // Escribe solo los datos del alumno (no el puntero 'siguiente')
+
         fwrite(temp, sizeof(Alumno) - sizeof(Alumno *), 1, archivo);
         temp = temp->siguiente;
     }
@@ -124,16 +120,16 @@ void guardarAlumnos() {
     printf("Alumnos guardados exitosamente en 'alumnos.dat'.\n");
 }
 
-// Función para cargar los alumnos desde un archivo binario
+
 void cargarAlumnos() {
-    // Primero, liberar cualquier memoria existente para evitar fugas
+
     while (listaAlumnos != NULL) {
         Alumno *temp = listaAlumnos;
         listaAlumnos = listaAlumnos->siguiente;
         free(temp);
     }
 
-    FILE *archivo = fopen("alumnos.dat", "rb"); // Abre el archivo en modo lectura binaria
+    FILE *archivo = fopen("alumnos.dat", "rb");
     if (archivo == NULL) {
         printf("No se encontró el archivo 'alumnos.dat' o error al abrirlo.\n");
         return;
@@ -146,13 +142,12 @@ void cargarAlumnos() {
             printf("Error: No se pudo asignar memoria al cargar alumnos.\n");
             break;
         }
-        // Lee los datos del alumno (excluyendo el puntero 'siguiente')
+
         if (fread(nuevoAlumno, sizeof(Alumno) - sizeof(Alumno *), 1, archivo) != 1) {
-            free(nuevoAlumno); // Si no se leyó un registro completo, libera la memoria
+            free(nuevoAlumno);
             break;
         }
-        nuevoAlumno->siguiente = NULL; // Inicializa el puntero siguiente
-
+        nuevoAlumno->siguiente = NULL;
         if (listaAlumnos == NULL) {
             listaAlumnos = nuevoAlumno;
         } else {
@@ -168,13 +163,13 @@ void cargarAlumnos() {
     printf("Alumnos cargados exitosamente desde 'alumnos.dat'.\n");
 }
 
-// Función para liberar toda la memoria asignada dinámicamente
+
 void liberarMemoria() {
     Alumno *temp;
     while (listaAlumnos != NULL) {
         temp = listaAlumnos;
         listaAlumnos = listaAlumnos->siguiente;
-        free(temp); // Libera la memoria de cada nodo
+        free(temp);
     }
     printf("Memoria liberada exitosamente.\n");
 }
@@ -183,12 +178,12 @@ int main() {
     int opcion;
 
     do {
-        printf("\n--- Menú de Gestión de Alumnos ---\n");
+        printf("\n--- Menú de Alumnos ---\n");
         printf("1. Agregar Alumno\n");
         printf("2. Mostrar Alumnos\n");
         printf("3. Guardar Alumnos en Disco\n");
         printf("4. Cargar Alumnos desde Disco\n");
-        printf("5. Eliminar Alumno\n"); // Nueva opción
+        printf("5. Eliminar Alumno\n");
         printf("6. Salir\n");
         printf("Seleccione una opción: ");
         scanf("%d", &opcion);
@@ -206,17 +201,16 @@ int main() {
             case 4:
                 cargarAlumnos();
                 break;
-            case 5: // Nuevo caso para eliminar
+            case 5:
                 eliminarAlumno();
                 break;
-            case 6: // Salir ahora es la opción 6
-                liberarMemoria(); // Liberar memoria antes de salir
+            case 6:
+                liberarMemoria();
                 printf("Saliendo del programa. ¡Hasta luego!\n");
                 break;
             default:
                 printf("Opción inválida. Intente de nuevo.\n");
         }
-    } while (opcion != 6); // La condición de salida es ahora 6
-
+    } while (opcion != 6);
     return 0;
 }

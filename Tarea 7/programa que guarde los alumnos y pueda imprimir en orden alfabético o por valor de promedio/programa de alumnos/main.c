@@ -108,7 +108,7 @@ void eliminarAlumno() {
 
     numAlumnos--; // Decrementar el contador de alumnos
 
-    // Volver a escribir todo el array (sin el alumno eliminado) en el archivo
+
     escribirAlumnosEnArchivo(alumnos, numAlumnos);
 
     printf("Alumno eliminado con éxito.\n");
@@ -121,7 +121,7 @@ void imprimirAlumno(const Alumno *alumno) {
     printf("Nombre: %s, Promedio: %.2f\n", alumno->nombre, alumno->promedio);
 }
 
-// Función para intercambiar dos alumnos (utilidad para Bubble Sort)
+
 void intercambiar(Alumno *a, Alumno *b) {
     Alumno temp = *a;
     *a = *b;
@@ -166,10 +166,7 @@ void imprimirAlumnos(int opcion) {
     } else if (opcion == 2) {
         bubbleSortPorPromedio(alumnos, numAlumnos);
         printf("\n--- Lista de Alumnos (Ordenada por Promedio de Mayor a Menor) ---\n");
-    } else if (opcion == 3) {
-        printf("\n--- Lista de Alumnos (En Orden de Registro) ---\n");
     }
-
 
     for (int i = 0; i < numAlumnos; i++) {
         imprimirAlumno(&alumnos[i]);
