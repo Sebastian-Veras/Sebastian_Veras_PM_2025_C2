@@ -163,7 +163,11 @@ fclose(archivo);
          return;
      }
      Carro nuevocarro;
+<<<<<<< HEAD
      printf("\n===Creacion de Nuevo Vehiculo==\n");
+=======
+     printf("\n===Creacion de Nuevo Carro==\n");
+>>>>>>> 3bf2a29f6d1ce4c96a69c669c410f1f1f47f7986
    validacionplaca(carro,numerocarro, nuevocarro.Placa);
      printf("Marca: ");
      scanf("%s", nuevocarro.Marca);
@@ -174,7 +178,11 @@ fclose(archivo);
      printf("Año:  ");
      scanf("%d", &nuevocarro.año);
      limpiar_buffer();
+<<<<<<< HEAD
      printf(" Tipo de Motor (A,B,C,D): ");
+=======
+     printf("Motor: ");
+>>>>>>> 3bf2a29f6d1ce4c96a69c669c410f1f1f47f7986
      scanf("%c",&nuevocarro.motor);
      limpiar_buffer();
      printf("Tipo de Combustible (Gasolina/Gasoil): ");
@@ -201,7 +209,11 @@ fclose(archivo);
      printf("Km de Mantenimiento:  ");
      scanf("%d", &nuevocarro.kilometro_matenimiento);
      limpiar_buffer();
+<<<<<<< HEAD
      printf("Costo del Vehiculo:  ");
+=======
+     printf("Costo del Carro:  ");
+>>>>>>> 3bf2a29f6d1ce4c96a69c669c410f1f1f47f7986
      scanf("%f", &nuevocarro.costo_del_vehiculo);
      limpiar_buffer();
      printf("Vida Util (años):  ");
@@ -215,7 +227,11 @@ fclose(archivo);
      limpiar_buffer();
      carro[numerocarro] = nuevocarro;
      guarda_carro_archivo(carro,numerocarro + 1);
+<<<<<<< HEAD
      printf("\n Vehiculo creado existosamente");
+=======
+     printf("\n Carro creado existosamente");
+>>>>>>> 3bf2a29f6d1ce4c96a69c669c410f1f1f47f7986
 
 
  }
@@ -226,8 +242,13 @@ fclose(archivo);
      int numerocarro = carga_de_carro(carro);
      char placaborrar[8];
      lista_carros();
+<<<<<<< HEAD
      printf("\n====Borrar Vehiculo=====\n");
      printf("Ingrese la placa del Vehiculo a Borrar: ");
+=======
+     printf("\n====Borrar Carro=====\n");
+     printf("Ingrese la placa del Carro a Borrar: ");
+>>>>>>> 3bf2a29f6d1ce4c96a69c669c410f1f1f47f7986
      scanf("%s",placaborrar);
      limpiar_buffer();
      int lista = buscarplaca(carro,numerocarro,placaborrar);
@@ -236,11 +257,19 @@ fclose(archivo);
             carro[y] = carro[y+1];
          }
          guarda_carro_archivo(carro,numerocarro - 1);
+<<<<<<< HEAD
          printf("Vehiculo con placa %s borrado existosamente.\n",placaborrar);
          return 1;
      }
      else {
         printf("No se encuetra ningun vehiculo con placa %s.\n", placaborrar);
+=======
+         printf("Carro con placa %s borrado existosamente.\n",placaborrar);
+         return 1;
+     }
+     else {
+        printf("No se encuetra ningun carro con placa %s.\n", placaborrar);
+>>>>>>> 3bf2a29f6d1ce4c96a69c669c410f1f1f47f7986
         return 0;
      }
 
@@ -250,8 +279,13 @@ fclose(archivo);
      int nuemrocarro = carga_de_carro(carro);
      char placamodificar [8];
      lista_carros();
+<<<<<<< HEAD
      printf("\n==Modificar Vehiculo==\n");
      printf("Ingrese la placa del Vehiculo a modificar: ");
+=======
+     printf("\n==Modificar Carro==\n");
+     printf("Ingrese la placa del carro a modificar: ");
+>>>>>>> 3bf2a29f6d1ce4c96a69c669c410f1f1f47f7986
      scanf("%s", placamodificar);
      limpiar_buffer();
      int lista = buscarplaca(carro,nuemrocarro,placamodificar);
@@ -259,6 +293,7 @@ fclose(archivo);
    {
     int opcion;
     do{
+<<<<<<< HEAD
         printf("\nVehiculo  enecontrado. Seleccione el campo a modificar:\n");
         printf("1. Marca: %s\n", carro[lista].Marca);
         printf("2. Modelo: %s\n", carro[lista].Modelo);
@@ -276,6 +311,24 @@ fclose(archivo);
         printf("14.Vida Util (Anualmente): %d\n", carro[lista].vida_util);
         printf("15. Deprecicion anual: %.2f\n", carro[lista].depresiacion);
         printf("16. Kilometros de promedio por año: %d\n ", carro[lista].kilometros_por_ano_promedio);
+=======
+        printf("\nCarro enecontrado. Seleccione el campo a modificar:\n");
+        printf("1. Marca: %s\n", carro[lista].Marca);
+        printf("2. Modelo: %s\n", carro[lista].Modelo);
+        printf("3. Año: %d\n", carro[lista].año);
+        printf("4. Tipo de Combustible: %s\n", carro[lista].tipo_de_combustible);
+        printf("5.Km de Gomas: %d\n",carro[lista].km_gomas);
+        printf("6. Costo de Gomas: %.2f\n", carro[lista].costo_de_gomas);
+        printf("7. Km por Galon en Carretera: %.2f\n",carro[lista].km_por_gl_max_carrectera);
+        printf("8. Km por Galon en Cuidad: %.2f\n", carro[lista].km_por_gl_min_cuidad);
+        printf("9. Costo del seguro anual: %.2f\n",carro[lista].costo_de_seguro);
+        printf("10.Kilometros para Mantenimiento: %d\n", carro[lista].kilometro_matenimiento);
+        printf("11. Costo de Mantenimiento: %.2f\n", carro[lista].costo_de_mantenimiento);
+        printf("12. Costo del Vehiculo: %.2f\n", carro[lista].costo_del_vehiculo);
+        printf("13.Vida Util (Anualmente): %d\n", carro[lista].vida_util);
+        printf("14. Deprecicion anual: %.2f\n", carro[lista].depresiacion);
+        printf("15. Kilometros de promedio por año: %d\n ", carro[lista].kilometros_por_ano_promedio);
+>>>>>>> 3bf2a29f6d1ce4c96a69c669c410f1f1f47f7986
         printf("0. Guardar cambios y salir\n");
         printf("Ingrese su opcion: ");
         scanf("%d", &opcion);
@@ -301,76 +354,123 @@ fclose(archivo);
         break;
 
     case 4:
+<<<<<<< HEAD
         printf("Nuevo Tipo de Motor:  ");
         scanf("%c", &carro[lista].motor);
         limpiar_buffer();
         break;
 
     case 5:
+=======
+>>>>>>> 3bf2a29f6d1ce4c96a69c669c410f1f1f47f7986
         printf("Nuevo Tipo de Combustible (Gasolina/Gasoil): ");
         scanf("%s", carro[lista].tipo_de_combustible);
         limpiar_buffer();
         break;
+<<<<<<< HEAD
     case 6:
+=======
+    case 5:
+>>>>>>> 3bf2a29f6d1ce4c96a69c669c410f1f1f47f7986
         printf("Nuevos Km de Gomas: ");
         scanf("%d", &carro[lista].km_gomas);
         limpiar_buffer();
         break;
 
+<<<<<<< HEAD
     case 7:
+=======
+    case 6:
+>>>>>>> 3bf2a29f6d1ce4c96a69c669c410f1f1f47f7986
         printf("Nuevo Costo de Gomas: ");
         scanf("%f", &carro[lista].costo_de_gomas);
         limpiar_buffer();
         break;
+<<<<<<< HEAD
     case 8:
+=======
+    case 7:
+>>>>>>> 3bf2a29f6d1ce4c96a69c669c410f1f1f47f7986
         printf("Nuevos Km por Galon en Carretera: ");
         scanf("%f", &carro[lista].km_por_gl_max_carrectera);
         limpiar_buffer();
         break;
 
+<<<<<<< HEAD
     case 9:
+=======
+    case 8:
+>>>>>>> 3bf2a29f6d1ce4c96a69c669c410f1f1f47f7986
         printf("Nuevos Km por Galon en Cuidad: ");
         scanf("%f", &carro[lista].km_por_gl_min_cuidad);
         limpiar_buffer();
         break;
 
+<<<<<<< HEAD
     case 10:
+=======
+    case 9:
+>>>>>>> 3bf2a29f6d1ce4c96a69c669c410f1f1f47f7986
         printf("Nuevos Costo de Seguro Anual: ");
         scanf("%f", &carro[lista].costo_de_seguro );
         limpiar_buffer();
         break;
 
+<<<<<<< HEAD
     case 11:
+=======
+    case 10:
+>>>>>>> 3bf2a29f6d1ce4c96a69c669c410f1f1f47f7986
         printf("Nuevos Km de Manteniemiento: ");
         scanf("%d", &carro[lista].kilometro_matenimiento);
         limpiar_buffer();
         break;
 
+<<<<<<< HEAD
     case 12:
+=======
+    case 11:
+>>>>>>> 3bf2a29f6d1ce4c96a69c669c410f1f1f47f7986
         printf("Nuevo Precio de Mantenimiento: ");
         scanf("%f", &carro[lista].costo_de_mantenimiento);
         limpiar_buffer();
         break;
 
+<<<<<<< HEAD
     case 13:
+=======
+    case 12:
+>>>>>>> 3bf2a29f6d1ce4c96a69c669c410f1f1f47f7986
         printf("Nuevo Precio del Vehiculo: ");
         scanf("%f", &carro[lista].costo_del_vehiculo);
         limpiar_buffer();
         break;
 
+<<<<<<< HEAD
     case 14:
+=======
+    case 13:
+>>>>>>> 3bf2a29f6d1ce4c96a69c669c410f1f1f47f7986
         printf("Nuevo Vida Util (años): ");
         scanf("%d", &carro[lista].vida_util );
         limpiar_buffer();
         break;
 
+<<<<<<< HEAD
     case 15:
+=======
+    case 14:
+>>>>>>> 3bf2a29f6d1ce4c96a69c669c410f1f1f47f7986
         printf("Nueva Deprecicion anualmente: ");
         scanf("%f", &carro[lista].depresiacion);
         limpiar_buffer();
         break;
 
+<<<<<<< HEAD
     case 16:
+=======
+    case 15:
+>>>>>>> 3bf2a29f6d1ce4c96a69c669c410f1f1f47f7986
         printf("Nuevos km Promedio por año:");
         scanf("%d", &carro[lista].kilometros_por_ano_promedio);
         limpiar_buffer();
@@ -389,11 +489,19 @@ fclose(archivo);
         }
     }while (opcion !=0);
     guarda_carro_archivo(carro, nuemrocarro);
+<<<<<<< HEAD
     printf("Vehiculo modificado Corretamente.\n");
 
      }
      else {
         printf("No se encotro ningun vehiculo con esa placa");
+=======
+    printf("Carro modificado Corretamente.\n");
+
+     }
+     else {
+        printf("No se encotro ningun carro con esa placa");
+>>>>>>> 3bf2a29f6d1ce4c96a69c669c410f1f1f47f7986
      }
  }
  void lista_carros()
@@ -402,10 +510,17 @@ fclose(archivo);
      int numerocarros = carga_de_carro(carro);
      if (numerocarros == 0)
      {
+<<<<<<< HEAD
          printf("\n No hay Vehiculos disponibles.\n");
          return;
      }
      printf("\n=====Lista de Vehiculos=====\n");
+=======
+         printf("\n No hay carros disponibles.\n");
+         return;
+     }
+     printf("\n=====Lista de Carros=====\n");
+>>>>>>> 3bf2a29f6d1ce4c96a69c669c410f1f1f47f7986
      for(int y =0; y < numerocarros; y++)
      {
        printf("Carro %d: Placa: %s | Marca: %s | Modelo: %s | Motor %c\n",
@@ -449,7 +564,11 @@ fclose(archivo);
     lista_carro = buscarplaca(carro,numero,placa_seleccionada);
      if(lista_carro == -1)
 {
+<<<<<<< HEAD
     printf("Vehiculo no encontrado.\n ");
+=======
+    printf("Carro no encontrado.\n ");
+>>>>>>> 3bf2a29f6d1ce4c96a69c669c410f1f1f47f7986
     return;
 }
 printf("Ingrese los kilometros totales del viaje: ");
@@ -476,7 +595,11 @@ float costo_por_km = costo_total_viaje /km_viaje ;
 
 
 printf("\n=====Calculo del Viaje=====\n");
+<<<<<<< HEAD
 printf("||Vehiculo:  %s %s (%s)", carro[lista_carro].Marca, carro[lista_carro].Modelo,carro[lista_carro].Placa);
+=======
+printf("||Carro:  %s %s (%s)", carro[lista_carro].Marca, carro[lista_carro].Modelo,carro[lista_carro].Placa);
+>>>>>>> 3bf2a29f6d1ce4c96a69c669c410f1f1f47f7986
 printf("||Kilometraje total del viaje: %.2f km\n",km_viaje);
 printf("||Porcentaje en cuidad: %.2f%%\n", porcentaje_cuidad);
 printf("                                                                     ");
@@ -495,8 +618,13 @@ void menu_principal(int numero_del_nivel)
     int opc;
     if(numero_del_nivel == 1)
     {
+<<<<<<< HEAD
     printf("\n======Sistema de Administracion de Gastos de Vehiculo x KM=====\n");
     printf("||1. Administracion de los Vehiculos\n");
+=======
+    printf("\n======Sistema de Administracion de Gastos de Carros x KM=====\n");
+    printf("||1. Administracion de los Carros\n");
+>>>>>>> 3bf2a29f6d1ce4c96a69c669c410f1f1f47f7986
     printf("||2. Administracion de los Datos Genericos\n");
     printf("||3. Calculo del Viaje\n");
     printf("||4. Salir\n");
@@ -530,10 +658,17 @@ void menu_principal(int numero_del_nivel)
 }
     else if (numero_del_nivel == 2){
         printf("\n========== Administrador  de Carros =====\n");
+<<<<<<< HEAD
         printf("|| 1. Crear Vehiculo\n");
         printf("|| 2. Borrar Vehiculos\n");
         printf("|| 3. Modificar Vehiculo\n");
         printf("|| 4. Lista de Vehiculos.\n");
+=======
+        printf("|| 1. Crear Carro\n");
+        printf("|| 2. Borrar Carro\n");
+        printf("|| 3. Modificar Carro\n");
+        printf("|| 4. Lista de Carro.\n");
+>>>>>>> 3bf2a29f6d1ce4c96a69c669c410f1f1f47f7986
         printf("|| 5.Volver al Menu Principal\n");
         printf("|| 6. Salir\n");
         printf("Ingrese una opcion para ejecuciòn: ");
