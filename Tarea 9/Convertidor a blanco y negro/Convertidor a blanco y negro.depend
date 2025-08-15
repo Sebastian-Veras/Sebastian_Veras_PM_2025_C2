@@ -1,0 +1,21 @@
+# depslib dependency file v1.0
+1753360669 source:c:\users\1\downloads\sebastian_veras_pm_2025_c2\tarea 9\convertidor a blanco y negro\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<jpeglib.h>
+
+1735247110 c:\msys64\mingw64\include\jpeglib.h
+	"jconfig.h"
+	"jmorecfg.h"
+	<stdio.h>
+	"jpegint.h"
+	"jerror.h"
+
+1735247110 c:\msys64\mingw64\include\jconfig.h
+
+1735247110 c:\msys64\mingw64\include\jmorecfg.h
+	<shlwapi.h>
+
+1735247110 c:\msys64\mingw64\include\jerror.h
+
